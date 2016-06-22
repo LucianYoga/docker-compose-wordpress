@@ -1,0 +1,4 @@
+backup/wordpress.tar
+backup/mysql.tar
+env.production
+copy.sh

@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile.wordpress
+    environment:
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER:     $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      WORDPRESS_SALT: $WORDPRESS_SALT
+    volumes:
+      - wordpress_data:/usr/src/wordpress
+      - ./apache2.conf:/etc/apache2/apache2.conf
+      - ./wp-config.php:/usr/src/wordpress/wp-config.php
+    ports:
+      - "80:80"
+    restart: always
+
+  # use official image only for preparing first wordpress files
+  initial_wordpress_data:
+    command: /bin/true
+    image: wordpress:4.5.2
+    volumes:
+      - wordpress_data:/usr/src/wordpress
+
+  mysql:
+    image: mysql:5.5
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE:      $MYSQL_DATABASE
+      MYSQL_USER:          $MYSQL_USER
+      MYSQL_PASSWORD:      $MYSQL_PASSWORD
+    volumes:
+      - mysql_data:/var/lib/mysql
+    mem_limit: 500m
+    restart: always
+
+volumes:
+  wordpress_data:
+  mysql_data:

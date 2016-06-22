@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  backup:
+    image: ubuntu:14.04
+    volumes:
+      - wordpress_data:/usr/src/wordpress
+      - mysql_data:/var/lib/mysql
+      - ./backup:/backup
