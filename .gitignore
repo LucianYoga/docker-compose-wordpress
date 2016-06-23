@@ -3,4 +3,5 @@ backup/mysql.tar
 env.production
 copy.sh
 env.aws
+env.mailgun
 crontab

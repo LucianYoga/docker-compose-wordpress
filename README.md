@@ -122,3 +122,5 @@ If you want to run backup periodically, you can load crontab file `crontab` whic
 ```
 $ crontab crontab
 ```
+
+`backup.sh` includes mailgun notification. If you don't need, you can remove it.
