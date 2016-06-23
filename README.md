@@ -63,7 +63,8 @@ $ open <docker ip or server url>
 You will have everything you need on remote server if you run `scp` like below (which I put in `copy.sh`):
 
 ```
-$ scp -r ../docker-compose-wordpress user@xx.xx.xx.xx:~/
+$ ssh user@xx.xx.xx.xx -C 'mkdir -p docker-compose-wordpress'
+$ scp -r [!.git]* user@xx.xx.xx.xx:~/docker-compose-wordpress
 ```
 
 ### Backup

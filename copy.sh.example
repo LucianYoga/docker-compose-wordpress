@@ -1,3 +1,4 @@
 #!/bin/bash
 
-scp -r ../docker-compose-wordpress xxxx@yy.yy.yy.yy:~/
+ssh user@xx.xx.xx.xx -C 'mkdir -p docker-compose-wordpress'
+scp -r [!.git]* user@xx.xx.xx.xx:~/docker-compose-wordpress
