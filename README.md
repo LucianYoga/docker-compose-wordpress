@@ -8,7 +8,7 @@
 
 Root directory looks very messy, but those files can be separated to two kinds as below:
 
-- application/docker related files:
+- application related files:
 
 ```
 .
@@ -30,7 +30,8 @@ Root directory looks very messy, but those files can be separated to two kinds a
 ├── backup.sh
 ├── docker-compose.backup.yml
 ├── docker-compose.s3_uploader.yml
-├── env.aws
+├── env.aws     (gitignored)
+├── env.mailgun (gitignored)
 └── backup
      ├── mysql.tar
      ├── wordpress.tar
