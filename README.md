@@ -26,7 +26,11 @@ Root directory looks very messy, but those files can be separated to two kinds a
 .
 ├── README.md
 ├── copy.sh (gitignored)
+├── crontab (gitignored)
+├── backup.sh
 ├── docker-compose.backup.yml
+├── docker-compose.s3_uploader.yml
+├── env.aws
 └── backup
      ├── mysql.tar
      ├── wordpress.tar
@@ -104,4 +108,16 @@ $ docker-compose exec mysql /bin/bash
 
 -- change wordpress domain data --
 (container)$ mysql -u'<new username>' -p'<new user password>' -D <new dbname> -e "UPDATE wp_options SET option_value = 'http://<domain>' WHERE wp_options.option_name = 'siteurl' OR wp_options.option_name = 'home';"
+```
+
+Upload backup to S3:
+
+```
+$ source env.aws && docker-compose -f docker-compose.s3_uploader.yml run --rm s3_uploader
+```
+
+If you want to run backup periodically, you can load crontab file `crontab` which calls `backup.sh`.
+
+```
+$ crontab crontab
 ```

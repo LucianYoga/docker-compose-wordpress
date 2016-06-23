@@ -1,0 +1,3 @@
+PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
+
+0 3 * * * cd /home/xxxx/docker-compose-wordpress && ./backup.sh

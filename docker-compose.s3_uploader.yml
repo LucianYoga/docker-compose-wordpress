@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  s3_uploader:
+    image: cgswong/aws
+    command: aws s3 cp /backup s3://$S3_BACKET_NAME/$S3_DIRECTORY/ --recursive
+    environment:
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+    volumes:
+      - ./backup:/backup
