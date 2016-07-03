@@ -1,8 +1,17 @@
+# Docker Compose Wordpress
+
 ### Features
 
-- almost same environment on local case and remote server case
-- easily update `wp-config.php` or `apache2.conf`
-- backup wordpress files and mysql data as docker volume
+- Provide almost same environment on local experiment and remote server production
+  - Differences are made only by `env.development` and `env.production` files
+- Easy to update config files (e.g. `wp-config.php` or `apache2.conf`)
+  - You only need `docker-compose restart wordpress` after those files are changed
+- Easy to add system dependency of php app
+  - You only need `docker-compose up --build wordpress` after `Dockerfile.wordpress` is changed
+- Easy to backup/restore wordpress files and mysql data (and email notification email notification)
+  - Backup whole docker volumes
+  - Upload to s3 by using [dockerized aws sdk app](https://hub.docker.com/r/cgswong/aws/)
+  - Call Mailgun API from `curl`
 
 ### Files
 
